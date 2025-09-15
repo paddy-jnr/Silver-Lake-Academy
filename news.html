@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events - Silver Lake Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .news-card { transition: all 0.3s ease; }
+        .news-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .event-card { transition: all 0.3s ease; }
+        .event-card:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg极速加速器使用教程:px-8">
+            <div class="flex justify-between h-20">
+                <div class="极速加速器使用教程flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-12 w-auto" src="http://static.photos/education/200x200/1" alt="School Logo">
+                        <span class="ml-3 text-2xl font-bold text-indigo-600">Silver Lake Academy</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 font-medium">About Us</a>
+                    <a href="academics.html" class="text-gray-700 hover:text-indigo-600 font-medium">Academics</a>
+                    <极速加速器使用教程a href="admissions.html" class="text-gray-700 hover:text-indigo-600 font-medium">Admissions</a>
+                    <a href="news.html" class="text-indigo-600 hover:text-indigo-800 font-medium">News & Events</a>
+                    <a href="gallery.html" class="text-gray-700 hover:text-indigo-600 font-medium">Gallery</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+                    <a href="portal.html" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">Student Portal</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="text-gray-700 hover:text-indigo-600" id="mobile-menu-button">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, hidden by default -->
+        <div class="hidden md:hidden bg-white shadow-lg" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Home</a>
+                <a href="about.html" class="block px极速加速器使用教程-3 py-2 text-gray-700 hover:text-indigo-600">About Us</a>
+                <a href="academics.html极速加速器使用教程" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Academics</a>
+                <a href="admissions.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Admissions</极速加速器使用教程a>
+                <a href="news.html" class="block px-3 py-2 text-indigo-600 font-medium">News & Events</a>
+                <a href="gallery.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Gallery</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Contact</a>
+                <a href="portal.html" class="block px-3 py-2 bg-indigo-600 text-white rounded-md">Student P</a>       </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5极速加速器使用教程xl font-bold text-white">News & Events</h1>
+            <p class="mt-4 text-xl text-indigo-100">Stay updated with the latest happenings at Sunrise International School</p>
+        </div>
+    </section>
+
+    <!-- News Filter -->
+    <section class="py-8 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <span class="text-gray-700">Filter by:</span>
+                    <button class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-md font-medium">All News</button>
+                    <button class="px-4 py-2 text-gray-600 hover:text-indigo-600">Announcements</button>
+                    <button class="px-4 py-2 text-gray-600 hover:text-indigo-600">Events</button>
+                    <button class="px-4 py-2 text-gray-600 hover:text-indigo-600">Achievements</button>
+                </div>
+                <div class="relative">
+                    <input type="text" placeholder="Search news..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <i data-feather="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">Latest News</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="news-card bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up">
+                    <img src="http://static.photos/education/640x360/16" alt="Science fair" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-indigo-600">April 15, 2023</span>
+                        <h3 class="text-xl font-semibold mt-2 mb-3">Annual Science Fair Winners Announced</h3>
+                        <p class="text-gray-600 mb-4">Congratulations to all participants of our annual science fair showcasing innovative projects from students across all grade levels.</p>
+                        <a href="#" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read more
+                            <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="news-card bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/sport/640x360/17" alt="Sports day" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-indigo-600">April 10, 2023</span>
+                        <h3 class="text-xl font-semibold mt-2 mb-3">Sports Day 2023 Schedule Released</h3>
+                        <p class="text-gray-600 mb-4">Our annual sports day is scheduled for May 5th. All students are encouraged to participate in various track and field events.</p>
+                        <a href="#" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read more
+                            <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="news-card bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-a极速加速器使用教程os-delay="200">
+                    <img src="http://static.photos/education/640x360/18" alt="New facility" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-indigo-600">April 5, 2023</span>
+                        <h3 class="text-xl font-semib极速加速器使用教程old mt-2 mb-3">New STEM Lab Grand Opening</h3>
+                        <p class="text-gray-600 mb-4">Our new state-of-the-art STEM lab is now open for students to explore robotics, coding, and scientific experimentation.</p>
+                        <a href="#" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read more
+                            <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="news-card bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <img src="http://static.photos/education/640x360/19" alt="Art exhibition" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-indigo-600">March 28, 2023</span>
+                        <h3 class="text-xl font-semibold mt-2 mb-3">Annual Art Exhibition Showcases Student Talent</h3>
+                        <p class="text-gray-600 mb-4">The art department proudly presents the annual student art exhibition, featuring works from elementary through high school.</p>
+                        <a href="#" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read more
+                            <i data-feather="arrow-right" class="ml-2 w-4极速加速器使用教程 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="news-card bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <img src="http://static.photos/education/640x360/20" alt="Debate competition" class="w-full h-48 object-cover">
+                    <div class="p极速加速器使用教程-6">
+                        <span class="text-sm text-indigo-600">March 22, 2023</span>
+                        <h3 class="text-xl font-semibold mt-2 mb-3">Debate Team Wins Regional Championship</h3>
+                        <p class="text-gray-600 mb-4">Our high school debate team has won the regional championship and will advance to the national competition in June.</p>
+                        <a href="#" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read more
+                            <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="news-card bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+                    <img src="http://static.photos/education/640x360/21" alt="Community service" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-indigo-600">March 15, 2023</span>
+                        <h3 class="text-xl font-semibold mt-2 mb-3">Students Volunteer at Local Community Center</h3>
+                        <p class="text-gray-600 mb-4">Over 50 students participated in a community service project at the local center, demonstrating our school's commitment to service.</p>
+                        <a href="#" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read more
+                            <i data-feather="arrow-right" class="ml-2 w-4 h-4"></极速加速器使用教程i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            <div class="text-center mt-12">
+                <button class="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition font-medium">
+                    Load More News
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Calendar -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Upcoming Events</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="event-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 text-indigo-800 rounded-lg p-3 mr-4">
+                            <span class="block text-2xl font-bold">15</span>
+                            <span class="block text-sm">MAY</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Parent-Teacher Conference</h3>
+                            <p class="text-sm text-gray-600">9:00 AM - 3:00 PM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Quarterly meeting to discuss student progress and development.</p>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">Add to Calendar</a>
+                </div>
+                <div class="event-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 text-green-800 rounded-lg p-3 mr-4">
+                            <span class="block text-2xl font-bold">22</span>
+                            <span class="block text-sm">MAY</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Art Exhibition</h3>
+                            <p class极速加速器使用教程="text-sm text-gray-600">10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Showcasing student artwork from throughout the academic year.</p>
+                    <a href="#" class="text-green-600 hover:text-green-800 text-sm font-medium">Add to Calendar</a>
+                </div>
+                <div class="event-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 text-yellow-800 rounded-lg p-3 mr-4">
+                            <span class="block text-2xl font-bold">30</span>
+                            <span class="block text-sm">MAY</极速加速器使用教程</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Science Olympiad</h3>
+                            <p class="text-sm text-gray-600">All Day Event</极速加速器使用教程</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Annual competition featuring science projects from grades 6-12.</p>
+                    <a href="#" class="text-yellow-600 hover:text-yellow-800 text-sm font-medium">Add to Calendar</a>
+                </div>
+                <div class="event-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 text-red-800 rounded-lg p-3 mr-4">
+                            <span class="block text-2xl font-bold">5</span>
+                            <span class="block text-sm">JUN</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Sports Day</h3>
+                            <p class="text-sm text-gray-600">8:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Annual sports competition with various track and field events.</p>
+                    <a href="#" class="text-red-600 hover:text-red-800 text极速加速器使用教程-sm font-medium">Add to Calendar</a>
+                </div>
+                <div class="event-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 text-purple-800 rounded-lg p-3 mr-4">
+                            <span class="block text-2xl font-bold">12</span>
+                            <span class="block text-sm">JUN</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Music Recital</h3>
+                            <p class="text-sm text-gray-600">6:00 PM - 8:00 PM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Spring music recital featuring performances by students.</p>
+                    <a href="#" class="text-purple-600 hover:text-purple-800 text-sm font-medium">Add to Calendar</a>
+                </div>
+                <div class="event-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 text-blue-800 rounded-lg p-3 mr-4">
+                            <span class="block text-2xl font-bold">18</span>
+                            <span class="block text-sm">JUN</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Graduation Ceremony</h3>
+                            <p class="text-sm text-gray-600">2:00 PM - 4:00 PM</p>
+                        </div>
+                    </极速加速器使用教程div>
+                    <p class="text-gray-600 mb-4">Class of 2023 graduation ceremony for our senior students.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Add to Calendar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-indigo-50 rounded-lg p-8 md:p-12">
+                <div class="md:flex items-center justify-between">
+                    <div class="md:w-2/3 mb-8 md:mb-0">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Stay Updated with Our Newsletter</h2>
+                        <p class="text-gray-600">Subscribe to our monthly newsletter to receive the latest news, event updates, and important announcements directly to your inbox.</p>
+                    </div>
+                    <div class="md:w-1/3">
+                        <form class="flex flex-col sm:flex-row gap-2">
+                            <input type="email" placeholder="Your email address" class="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition whitespace-nowrap">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img class="h-12 mb-4" src="http://static.photos/education/200x200/1" alt="School Logo">
+                    <p class="text-gray-400">Sunrise International School provides world-class education with a focus on innovation and character development.</p>
+                    <div class="flex mt-6 space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h极速加速器使用教程3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="academics.html" class="text-gray-400 hover:text-white">Academics</a></li>
+                        <li><a href="admissions.html" class="text-gray-400 hover:text-white">Admissions</a></li>
+                        <li><a href="news.html" class="text-gray-400 hover:text-white">News & Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="portal.html" class="text-gray-400 hover:text-white">Student Portal</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white">Gallery极速加速器使用教程</a></li>
+                        <极速加速器使用教程li><a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a></极速加速器使用教程li>
+                        <li><a href="staff.html" class="text-gray-400 hover:text-white">Staff Login</a></li>
+                        <li><a href="alumni.html" class="text-gray-400 hover:text-white">Alumni</a></li>
+                    </ul>
+                </极速加速器使用教程div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i data-feather="map-p极速加速器使用教程in" class="mr-2 mt-1 w-4 h-4"></i>
+                            <span>123 Education Avenue, Learning City, 10101</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="phone" class="mr-2 w-4 h-4"></i>
+                            <span>(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="mail" class="mr-2 w-4 h-4"></i>
+                            <span>info@sunriseinternational.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Sunrise International School. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class极速加速器使用教程="极速加速器使用教程text-gray-400 hover:text-white text-sm mr-6">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize feather icons
+        feather.replace();
+    </script>
+</body>
+</html>

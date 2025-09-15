@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Silver Lake Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .timeline-container { position: relative; }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #e2e8f0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        @media (max-width: 768px) {
+            .timeline-container::after { left: 31px; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-12 w-auto" src="http://static.photos/education/200x200/1" alt="School Logo">
+                        <span class="ml-3 text-2xl font-bold text-indigo-600">Silver Lake Academy</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium">Home</a>
+                    <a href="about.html" class="text-indigo-600 hover:text-indigo-800 font-medium">About Us</a>
+                    <a href="academics.html" class="text-gray-700 hover:text-indigo-600 font-medium">Academics</a>
+                    <a href="admissions.html" class="text-gray-700 hover:text-indigo-600 font-medium">Admissions</a>
+                    <a href="news.html" class="text-gray-700 hover:text-indigo-600 font-medium">News & Events</a>
+                    <a href="gallery.html" class="text-gray-700 hover:text-indigo-600 font-medium">Gallery</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+                    <a href="portal.html" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">Student Portal</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="text-gray-700 hover:text-indigo-600" id="mobile-menu-button">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, hidden by default -->
+        <div class="hidden md:hidden bg-white shadow-lg" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-indigo-600 font-medium">About Us</a>
+                <a href="academics.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Academics</a>
+                <a href="admissions.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Admissions</a>
+                <a href="news.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">News & Events</a>
+                <a href="gallery.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Gallery</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-极速加速器使用教程700 hover:text-indigo-600">Contact</a>
+                <a href="portal.html" class="block px-3 py-2 bg-indigo-600 text-white rounded-md">Student Portal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">About Silver Lake Academy</h1>
+            <p class="mt-4 text-xl text-indigo-100">Discover our story, mission, and the people who make our school special</p>
+        </div>
+    </section>
+
+    <!-- School History -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Our History</h2>
+                    <p class="text-gray-600 mb-4">Founded in 1995, Silver Lake Academy began with a vision to create an educational institution that would prepare students for a globalized world while maintaining strong roots in local values and community.</p>
+                    <p class="text-gray-600 mb-4">What started as a small campus with just 50 students has now grown into a thriving educational community of over 1,200 students from diverse backgrounds and cultures.</p>
+                    <p class="text-gray-600">Throughout our journey, we've remained committed to our founding principles of academic excellence, character development, and innovation in education.</p>
+                </div>
+                <div data-aos="fade-left">
+                    <img src="http://static.photos/education/640x360/9" alt="School history" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Journey</h2>
+            <div class="timeline-container">
+                <div class="relative mb-8">
+                    <div class="timeline-point absolute rounded-full bg-indigo-600 border-4 border-white w-6 h-6 z-10" style="left: 50%; margin-left: -12px;"></div>
+                    <div class="md:flex items-center w-full">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0" data-aos="fade-right">
+                            <h3 class="text-xl font-semibold text-indigo-700">1995</h3>
+                            <p class="text-gray-600">School founded with 50 students and 5 teachers</p>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="font-semibold text-lg mb-2">The Beginning</h4>
+                                <p class="text-gray-600">Established with a focus on bilingual education and character development</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative mb-8">
+                    <div class="timeline-point absolute rounded-full bg-indigo-600 border-4 border-white w-6 h-6 z-10" style="left: 50%; margin-left: -12px;"></div>
+                    <div class="md:flex items-center w-full">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0" data-aos="fade-right">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="font-semibold text-lg mb-2">Expansion</h4>
+                                <p class="text-gray-600">Added high school program and STEM-focused curriculum</p>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
+                            <h3 class="text-xl font-semibold text-indigo-700">2005</h3>
+                            <p class="text-gray-600">Expanded to include high school grades</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative mb-8">
+                    <div class="timeline-point absolute rounded-full bg-indigo-600 border-4 border-white w-6 h-6 z-10" style="left: 50%; margin-left: -12px;"></div>
+                    <div class="md:flex items-center w-full">
+                        <div class="md:w-1极速加速器使用教程2 md:pr-12 md:text-right mb-4 md:mb-0" data-aos="fade-right">
+                            <h3 class="text-xl font-semibold text-indigo-700">2015</h3>
+                            <p class="text-gray-600">Achieved International School accreditation</p>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="font-semibold text-lg mb-2">Global Recognition</h4>
+                                <p class="text-gray-600">Received accreditation from international education bodies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="timeline-point absolute rounded-full bg-indigo-600 border-4 border-white w-6 h-6 z-10" style="left: 50%; margin-left: -12px;"></div>
+                    <div class="md:flex items-center w-full">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0" data-aos="fade-right">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="font-semibold text-lg mb-2">Digital Transformation</h4>
+                                <p class="text-gray-600">Implemented comprehensive digital learning platform</p>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
+                            <h极速加速器使用教程3 class="text-xl font-semibold text-indigo-700">2020</h3>
+                            <p class="text-gray-600">Launched digital learning initiatives and STEM innovation lab</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Mission & Values</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center" data-aos="fade-up">
+                    <div class="bg-indigo-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="target" class="text-indigo-600 w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Excellence</h3>
+                    <p class="text-gray-600">We strive for academic excellence and personal growth in every student</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="users" class="text-green-600 w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Community</h3>
+                    <p class="text-gray-600">We foster a supportive, inclusive environment where everyone belongs</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-yellow-100 w-20极速加速器使用教程 h-20 rounded-full flex items-center justify-center mx-auto mb极速加速器使用教程-6">
+                        <i data-feather="zap" class="text-yellow-600 w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semib极速加速器使用教程old mb-3">Innovation</h3>
+                    <p class="text-gray-600">We embrace new ideas and technologies to enhance learning experiences</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principal's Message -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div data-aos="fade-right">
+                    <img src="http://static.photos/people/640x360/10" alt="Principal" class="rounded-lg shadow-xl">
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Message from Our Principal</h2>
+                    <p class="text-gray-600 mb-4">"Silver Lake Academy, we believe that every child has unique talents and potential waiting to be discovered. Our dedicated team of educators is committed to providing a nurturing environment where students can explore their interests, develop critical thinking skills, and grow into confident, compassionate global citizens."</p>
+                    <p class="text-gray-600 mb-4">We combine rigorous academic programs with opportunities for creative expression, physical activity, and community service. This holistic approach ensures that our students are not only prepared for academic success but also for life beyond the classroom.</p>
+                    <p class="text-gray-600">I invite you to visit our campus and experience the Sunrise difference firsthand. Welcome to our school family!"</p>
+                    <div class="mt-6">
+                        <p class="font-semibold">Dr. Emily Rodriguez</p>
+                        <p class="text-gray-600">Principal, Silver Lake Academy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Leadership Team</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up">
+                    <img src="http://static.photos/people/200x200/11" alt="Team member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Dr. Emily Rodriguez</h3>
+                    <p class="text-indigo-600">Principal</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/people/200x200/12" alt="Team member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Mr. James Wilson</h3>
+                    <p class="text-indigo-600">Vice Principal</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <img src="http://static.photos/people/200x200/13" alt="Team member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Ms. Sarah Johnson</h3>
+                    <p class="text-indigo-600">Academic Dean</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <img src="http://static.photos/people/200x200/14" alt="Team member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Mr. David Chen</h3>
+                    <p class="text-indigo-600">Student Affairs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img class="h-12 mb-4" src="http://static.photos/education/200极速加速器使用教程x200/1" alt="School Logo">
+                    <p class="text-gray-400">Silver Lake Academy provides world-class education with a focus on innovation and character development.</p>
+                    <div class="flex mt-6 space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <极速加速器使用教程i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</极速加速器使用教程></a></li>
+                        <li><a href="academics.html" class="text-gray-400 hover:text-white">Academics</a></li>
+                        <li><a href="admissions.html" class="text-gray-400 hover:text-white">Admissions</a></li>
+                        <li><a href="news.html" class极速加速器使用教程="text-gray-400 hover:text-white">News & Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="portal.html" class="text-gray-400 hover:text-white">Student Portal</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="staff.html" class="text-gray-400 hover:text-white">Staff Login</a></li>
+                        <li><a href="alumni.html" class="text-gray-400 hover:text-white">Alumni</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i data-feather="map-pin" class="mr-2 mt-1 w-4 h-4"></i>
+                            <span>123 Education Avenue, Learning City, 10101</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="phone" class="mr-2 w-4 h-4"></i>
+                            <span>(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="mail" class="mr-2 w-4 h-4"></i>
+                            <span>info@sunriseinternational.edu</span>
+                        </极速加速器使用教程li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Silver Lake Academy. All rights reserved.</p>
+                <div class="mt-4 md:mt极速加速器使用教程-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm mr-6">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize feather icons
+        feather.replace();
+    </script>
+</body>
+</html>

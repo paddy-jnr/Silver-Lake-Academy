@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Silver Lake Academy</title>
+
+  <!-- Tailwind (CDN for rapid prototyping) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS (animations) and Feather icons -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script defer src="https://unpkg.com/feather-icons"></script>
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Base ---------- */
+    :root{
+      --accent-a: #667eea;
+      --accent-b: #764ba2;
+      --accent-c: #37d5d6;
+      --muted: #6b7280;
+    }
+    html,body{height:100%}
+    body{
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#f7fafc 0%, #f3f6ff 100%);
+      color:#0b1220;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* ---------- Global Utilities ---------- */
+    .gradient-bg { background: linear-gradient(135deg,var(--accent-a) 0%, var(--accent-b) 100%); }
+    .hover-lift { transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s; }
+    .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(12,18,40,0.08); }
+    .student-card { transition: transform .24s ease, box-shadow .24s ease; }
+    .student-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12,18,40,0.08); }
+
+    /* ---------- NAVBAR (upgraded) ---------- */
+    .site-nav {
+      position: fixed; inset: 12px 18px auto 18px; z-index: 60;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.80));
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(9,12,30,0.06);
+      backdrop-filter: blur(8px) saturate(120%);
+      transition: transform .28s ease, padding .2s ease, box-shadow .28s ease;
+      padding: 10px 18px;
+    }
+    .site-nav.scrolled { transform: translateY(-6px); box-shadow: 0 18px 50px rgba(9,12,30,0.10); }
+
+    /* mobile menu slide */
+    .mobile-menu {
+      transition: max-height .28s ease, opacity .28s ease;
+      overflow: hidden;
+    }
+
+    /* accessible focus */
+    a:focus, button:focus, input:focus { outline: 3px solid rgba(99,102,241,0.14); outline-offset: 2px; border-radius: 8px; }
+
+    /* ---------- HERO (upgraded) ---------- */
+    .hero {
+      position: relative;
+      padding-top: 6.5rem;
+      padding-bottom: 4.5rem;
+      border-bottom-left-radius: 56px;
+      border-bottom-right-radius: 56px;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    /* animated gradient overlay for subtle motion */
+    .hero::before {
+      content: "";
+      position: absolute; inset:0; z-index:0; pointer-events:none;
+      background: linear-gradient(60deg, rgba(255,255,255,0.03), rgba(255,255,255,0.0));
+      mix-blend-mode: overlay;
+      animation: slowMove 12s linear infinite;
+    }
+    @keyframes slowMove {
+      0%{ transform: translateX(-8%); }
+      50%{ transform: translateX(8%); }
+      100%{ transform: translateX(-8%); }
+    }
+
+    .hero-inner { position:relative; z-index: 2; }
+
+    .hero .kicker {
+      display:inline-block;
+      padding: .35rem .75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      font-weight:600;
+      font-size: .875rem;
+      letter-spacing:.02em;
+      color: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero h1 {
+      font-weight: 800;
+      line-height: 1.03;
+      text-shadow: 0 8px 30px rgba(9,12,30,0.12);
+    }
+
+    .hero .lead { color: rgba(255,255,255,0.92); max-width: 720px; }
+
+    .hero-figure { border-radius: 18px; overflow: hidden; box-shadow: 0 40px 90px rgba(13,20,40,0.14); transform-origin:center; }
+
+    /* floating badge on hero image */
+    .hero-badge {
+      position:absolute; left: -18px; bottom: -18px;
+      background: linear-gradient(90deg,var(--accent-b), var(--accent-a));
+      color: white; padding: 10px 14px; border-radius:12px; box-shadow: 0 12px 36px rgba(102,102,170,0.12);
+      font-weight:600; transform: rotate(-6deg);
+    }
+
+    /* wave divider */
+    .hero-wave { position: absolute; bottom: -1px; left:0; right:0; height: 96px; }
+    .hero-wave svg { width:100%; height:100%; display:block; }
+
+    /* small adjustments site-wide */
+    .prog-card, .news-card, .event-card, .testimonial { transition: transform .28s ease, box-shadow .28s ease; }
+    .prog-card:hover, .news-card:hover, .event-card:hover, .testimonial:hover { transform: translateY(-8px); box-shadow: 0 18px 42px rgba(12,18,40,0.06); }
+
+    /* improved footer contrast and spacing */
+    footer.site-footer { background: linear-gradient(90deg,#081026,#052033); color: #dbeafe; border-radius: 12px; padding: 40px 16px; }
+
+    /* responsive tweaks */
+    @media (max-width: 1024px) {
+      .site-nav{ left:12px; right:12px; }
+      .hero { padding-top:5.5rem; padding-bottom:3.5rem; border-radius:32px; }
+    }
+    @media (max-width: 640px) {
+      .site-nav{ left:10px; right:10px; }
+      .hero { padding-top:4.5rem; padding-bottom:3rem; border-radius:20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR — upgraded but content preserved -->
+  <div class="site-nav" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <!-- logo -->
+      <a href="index.html" class="flex items-center gap-3" aria-label="Sunrise International home">
+        <img src="http://static.photos/education/200x200/1" alt="School Logo" class="h-12 w-auto rounded-md shadow-sm transform transition group-hover:scale-105" />
+        <div class="leading-tight">
+          <div class="text-2xl font-bold" style="background: linear-gradient(90deg,var(--accent-a),var(--accent-b)); -webkit-background-clip:text; color:transparent;">Silver Lake Academy</div>
+          <div class="text-xs text-slate-500">Excellence · Innovation · Character</div>
+        </div>
+      </a>
+
+      <!-- desktop links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-indigo-600 hover:text-indigo-800 font-medium">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-indigo-600 font-medium">About Us</a>
+        <a href="academics.html" class="text-gray-700 hover:text-indigo-600 font-medium">Academics</a>
+        <a href="admissions.html" class="text-gray-700 hover:text-indigo-600 font-medium">Admissions</a>
+        <a href="news.html" class="text-gray-700 hover:text-indigo-600 font-medium">News & Events</a>
+        <a href="gallery.html" class="text-gray-700 hover:text-indigo-600 font-medium">Gallery</a>
+        <a href="contact.html" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+        <a href="portal.html" class="inline-flex items-center px-4 py-2 rounded-full font-semibold text-white" style="background: linear-gradient(90deg, var(--accent-a), var(--accent-b)); box-shadow: 0 10px 28px rgba(99,102,241,0.12);">
+          Student Portal
+        </a>
+      </div>
+
+      <!-- mobile button -->
+      <div class="md:hidden">
+        <button id="mobileToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle menu" class="p-2 rounded-md bg-white shadow">
+          <i data-feather="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile menu (animated) -->
+    <div id="mobileMenu" class="mobile-menu max-h-0 opacity-0 md:hidden mt-3 mx-4 rounded-lg bg-white/95 p-3 shadow-lg" aria-hidden="true">
+      <a href="index.html" class="block px-3 py-2 rounded-md font-medium text-indigo-600">Home</a>
+      <a href="about.html" class="block px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600">About Us</a>
+      <a href="academics.html" class="block px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600">Academics</a>
+      <a href="admissions.html" class="block px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600">Admissions</a>
+      <a href="news.html" class="block px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600">News & Events</a>
+      <a href="gallery.html" class="block px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600">Gallery</a>
+      <a href="contact.html" class="block px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600">Contact</a>
+      <a href="portal.html" class="block mt-2 px-3 py-2 rounded-md text-white font-semibold" style="background: linear-gradient(90deg,var(--accent-a),var(--accent-b));">Student Portal</a>
+    </div>
+  </div>
+
+  <!-- HERO — upgraded, content preserved and improved -->
+  <header class="hero gradient-bg" role="banner" aria-labelledby="hero-heading">
+    <div class="hero-inner max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="md:flex md:items-center md:justify-between gap-12">
+        <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+          <span class="kicker">Admissions</span>
+          <h1 id="hero-heading" class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">
+            Where Learning Meets <span style="background: linear-gradiet(90deg,#ffd166,#ff6b6b); -webkit-background-clip:text; color:transparent;">Innovation</span>
+          </h1>
+          <p class="mt-4 lead text-xl">Empowering students to become global citizens through holistic education and cutting-edge technology.</p>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="admissions.html" class="inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold bg-white text-indigo-700 shadow hover:scale-105 transition" role="button">
+              Apply Now
+            </a>
+            <a href="about.html" class="inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold border-2 border-white text-white shadow hover:bg-white hover:text-indigo-700 transition" role="button">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+          <div class="hero-figure relative">
+            <img src="http://static.photos/education/640x360/2" alt="Students learning" class="block w-full rounded-2xl shadow-2xl transform transition duration-500 hover:scale-105" />
+            <div class="hero-badge" aria-hidden="true">🏆 Excellence in Education</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- decorative wave (bottom) -->
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#f7fafc" d="M0,192L80,186.7C160,181,320,171,480,181.3C640,192,800,224,960,213.3C1120,203,1280,149,1360,122.7L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+      </svg>
+    </div>
+  </header>
+
+  <!-- ========== Quick Links (unchanged content, subtle polish) ========== -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Quick Access</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <a href="portal.html" class="student-card bg-indigo-50 p-6 rounded-lg text-center group hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-200">
+          <div class="mx-auto bg-indigo-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+            <i data-feather="user" class="text-indigo-600"></i>
+          </div>
+          <h3 class="font-medium text-indigo-700 group-hover:text-indigo-900">Student Portal</h3>
+          <p class="text-sm text-gray-600 mt-2">Access assignments and grades</p>
+        </a>
+
+        <a href="news.html" class="student-card bg-green-50 p-6 rounded-lg text-center group hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-200">
+         <div class="mx-auto bg-green-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+            <i data-feather="calendar" class="text-green-600"></i>
+          </div>
+          <h3 class="font-medium text-green-700 group-hover:text-green-900">School Calendar</h3>
+          <p class="text-sm text-gray-600 mt-2">View upcoming events</p>
+        </a>
+
+        <a href="gallery.html" class="student-card bg-yellow-50 p-6 rounded-lg text-center group hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-200">
+          <div class="mx-auto bg-yellow-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+            <i data-feather="image" class="text-yellow-600"></i>
+          </div>
+          <h3 class="font-medium text-yellow-700 group-hover:text-yellow-900">Photo Gallery</h3>
+          <p class="text-sm text-gray-600 mt-2">See school activities</p>
+        </a>
+
+        <a href="contact.html" class="student-card bg-red-50 p-6 rounded-lg text-center group hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-rose-200">
+          <div class="mx-auto bg-red-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+            <i data-feather="phone" class="text-red-600"></i>
+          </div>
+          <h3 class="font-medium text-red-700 group-hover:text-red-900">Contact Us</h3>
+          <p class="text-sm text-gray-600 mt-2">Get in touch</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Mission & Vision (unchanged content) ========== -->
+  <section class="py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-12">
+        <div data-aos="fade-right">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Vision</h2>
+          <p class="text-gray-600 text-lg">To create a nurturing environment that fosters academic excellence, creativity, and character development, preparing students to thrive in a rapidly changing world.</p>
+        </div>
+        <div data-aos="fade-left">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Mission</h2>
+          <p class="text-gray-600 text-lg">To provide a holistic education that combines rigorous academics with innovative teaching methods, extracurricular activities, and values-based learning to develop well-rounded individuals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Featured News (content preserved, polish) ========== -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Latest News & Announcements</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="news-card bg-white rounded-lg shadow-md overflow-hidden hover-lift" data-aos="fade-up">
+          <img src="http://static.photos/education/640x360/3" alt="Science fair" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <time class="text-sm text-indigo-600">April 15, 2023</time>
+            <h3 class="text-xl font-semibold mt-2 mb-3">Annual Science Fair Winners</h3>
+            <p class="text-gray-600">Congratulations to all participants of our annual science fair showcasing innovative projects.</p>
+            <a href="news.html" class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800" aria-label="Read more about Annual Science Fair Winners">
+              Read more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="news-card bg-white rounded-lg shadow-md overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="100">
+          <img src="http://static.photos/sport/640x360/4" alt="Sports day" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <time class="text-sm text-indigo-600">April 10, 2023</time>
+            <h3 class="text-xl font-semibold mt-2 mb-3">Sports Day Announcement</h3>
+            <p class="text-gray-600">Annual sports day scheduled for May 5th. All students are encouraged to participate.</p>
+            <a href="news.html" class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800">
+              Read more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="news-card bg-white rounded-lg shadow-md overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="200">
+          <img src="http://static.photos/education/640x360/5" alt="New facility" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <time class="text-sm text-indigo-600">April 5, 2023</time>
+            <h3 class="text-xl font-semibold mt-2 mb-3">New STEM Lab Opening</h3>
+            <p class="text-gray-600">Our new state-of-the-art STEM lab is now open for students to explore robotics and coding.</p>
+            <a href="news.html" class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800">
+              Read more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="news.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+          View All News <i data-feather="arrow-right" class="ml-2 w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Upcoming Events (unchanged content) ========== -->
+  <section class="py-16 bg-indigo-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Upcoming Events</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="event-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
+          <div class="flex items-center mb-4">
+            <div class="bg-indigo-100 text-indigo-800 rounded-lg p-3 mr-4">
+              <span class="block text-2xl font-bold">15</span>
+              <span class="block text-sm">MAY</span>
+            </div>
+            <div>
+              <h3 class="font-semibold">Parent-Teacher Conference</h3>
+              <p class="text-sm text-gray-600">9:00 AM - 3:00 PM</p>
+            </div>
+          </div>
+          <p class="text-gray-600">Quarterly meeting to discuss student progress and development.</p>
+        </div>
+
+        <div class="event-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center mb-4">
+            <div class="bg-green-100 text-green-800 rounded-lg p-3 mr-4">
+              <span class="block text-2xl font-bold">22</span>
+              <span class="block text-sm">MAY</span>
+            </div>
+            <div>
+              <h3 class="font-semibold">Art Exhibition</h3>
+              <p class="text-sm text-gray-600">10:00 AM - 4:00 PM</p>
+            </div>
+          </div>
+          <p class="text-gray-600">Showcasing student artwork from throughout the academic year.</p>
+        </div>
+
+        <div class="event-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center mb-4">
+            <div class="bg-yellow-100 text-yellow-800 rounded-lg p-3 mr-4">
+              <span class="block text-2xl font-bold">30</span>
+              <span class="block text-sm">MAY</span>
+            </div>
+            <div>
+              <h3 class="font-semibold">Science Olympiad</h3>
+              <p class="text-sm text-gray-600">All Day Event</p>
+            </div>
+          </div>
+          <p class="text-gray-600">Annual competition featuring science projects from grades 6-12.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Testimonials ========== -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">What Our Students Say</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="testimonial bg-gray-50 p-6 rounded-lg" data-aos="fade-up">
+          <div class="flex items-center mb-4">
+            <img class="h-12 w-12 rounded-full" src="http://static.photos/people/200x200/6" alt="Student">
+            <div class="ml-4">
+              <h4 class="font-semibold">Sarah Johnson</h4>
+              <p class="text-sm text-gray-600">Grade 10 Student</p>
+            </div>
+          </div>
+          <p class="text-gray-600">"The teachers here are amazing! They make learning fun and always encourage us to think outside the box."</p>
+        </div>
+
+        <div class="testimonial bg-gray-50 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center mb-4">
+            <img class="h-12 w-12 rounded-full" src="http://static.photos/people/200x200/7" alt="Student">
+            <div class="ml-4">
+              <h4 class="font-semibold">Michael Chen</h4>
+              <p class="text-sm text-gray-600">Grade 8 Student</p>
+            </div>
+          </div>
+          <p class="text-gray-600">"I love the STEM programs at Silver Lake. The robotics club has helped me discover my passion for engineering."</p>
+        </div>
+
+        <div class="testimonial bg-gray-50 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center mb-4">
+            <img class="h-12 w-12 rounded-full" src="http://static.photos/people/200x200/8" alt="Student">
+            <div class="ml-4">
+              <h4 class="font-semibold">Emma Rodriguez</h4>
+              <p class="text-sm text-gray-600">Grade 11 Student</p>
+            </div>
+          </div>
+          <p class="text-gray-600">"The international focus of the curriculum has really prepared me for my dream of studying abroad."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Call to Action ========== -->
+  <section class="py-16 gradient-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-6">Ready to Join Our Community?</h2>
+      <p class="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">Take the first step toward an exceptional educational experience for your child.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="admissions.html" class="bg-white text-indigo-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition">Apply for Admission</a>
+        <a href="contact.html" class="border-2 border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-indigo-600 transition">Schedule a Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Footer (improved contrast) ========== -->
+  <footer class="site-footer mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <img class="h-12 mb-4 rounded-md shadow-sm" src="http://static.photos/education/200x200/1" alt="School Logo">
+          <p class="text-sm text-slate-300 leading-relaxed">Silver Lake Academy provides world-class education with a focus on innovation and character development.</p>
+          <div class="flex mt-6 space-x-4">
+            <a href="#" class="text-slate-300 hover:text-white" aria-label="facebook"><i data-feather="facebook"></i></a>
+            <a href="#" class="text-slate-300 hover:text-white" aria-label="twitter"><i data-feather="twitter"></i></a>
+            <a href="#" class="text-slate-300 hover:text-white" aria-label="instagram"><i data-feather="instagram"></i></a>
+            <a href="#" class="text-slate-300 hover:text-white" aria-label="youtube"><i data-feather="youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-slate-300">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="about.html" class="hover:text-white">About Us</a></li>
+            <li><a href="academics.html" class="hover:text-white">Academics</a></li>
+            <li><a href="admissions.html" class="hover:text-white">Admissions</a></li>
+            <li><a href="news.html" class="hover:text-white">News & Events</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Resources</h3>
+          <ul class="space-y-2 text-slate-300">
+            <li><a href="portal.html" class="hover:text-white">Student Portal</a></li>
+            <li><a href="gallery.html" class="hover:text-white">Gallery</a></li>
+            <li><a href="contact.html" class="hover:text-white">Contact Us</a></li>
+            <li><a href="staff.html" class="hover:text-white">Staff Login</a></li>
+            <li><a href="alumni.html" class="hover:text-white">Alumni</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+          <ul class="space-y-2 text-slate-300 text-sm">
+            <li class="flex items-start"><i data-feather="map-pin" class="mr-2 mt-1 w-4 h-4"></i><span>123 Education Avenue, Learning City, 10101</span></li>
+            <li class="flex items-center"><i data-feather="phone" class="mr-2 w-4 h-4"></i><span>(123) 456-7890</span></li>
+            <li class="flex items-center"><i data-feather="mail" class="mr-2 w-4 h-4"></i><span>info@sunriseinternational.edu</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-300">
+        <p>© <span id="copyYear"></span> Silver Lake Academy. All rights reserved.</p>
+        <div class="mt-4 md:mt-0">
+          <a href="#" class="text-slate-300 hover:text-white mr-6">Privacy Policy</a>
+          <a href="#" class="text-slate-300 hover:text-white">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ---------- Scripts ---------- -->
+  <script>
+    // initialize AOS & feather icons
+    document.addEventListener('DOMContentLoaded', () => {
+      if(window.AOS) AOS.init({ duration: 800, once: true, mirror: false });
+      if(window.feather) feather.replace({ width: 16, height: 16 });
+      // set footer year
+      document.getElementById('copyYear').textContent = new Date().getFullYear() || '2025';
+    });
+
+    // mobile menu toggle with animation & accessibility
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileToggle?.addEventListener('click', () => {
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', String(!expanded));
+      if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px') {
+        mobileMenu.style.maxHeight = '0';
+        mobileMenu.style.opacity = '0';
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      } else {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+        mobileMenu.style.opacity = '1';
+        mobileMenu.setAttribute('aria-hidden', 'false');
+      }
+    });
+
+    // Close mobile menu on ESC or clicking outside
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        mobileMenu.style.maxHeight = '0';
+        mobileMenu.style.opacity = '0';
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileToggle?.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!mobileMenu?.contains(target) && !mobileToggle?.contains(target) && window.innerWidth < 768) {
+        mobileMenu.style.maxHeight = '0';
+        mobileMenu.style.opacity = '0';
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileToggle?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Nav shrink effect when scrolling
+    const siteNav = document.getElementById('siteNav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const sc = window.scrollY;
+      if (sc > 16) siteNav.classList.add('scrolled');
+      else siteNav.classList.remove('scrolled');
+      lastScroll = sc;
+    }, { passive: true });
+
+    // small reveal intersection observer for other elements (extra polish)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('aos-animate');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

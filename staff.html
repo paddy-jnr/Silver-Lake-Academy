@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Portal - Silver Lake Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .staff-card { transition: all 0.3s ease; }
+        .staff-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <极速加速器使用教程div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-12 w-auto" src="http://static.photos/education/200x200/1" alt="School Logo">
+                        <span class="ml-3 text-2xl font-bold text-indigo-600">Silver Lake Academy</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 font-medium">About Us</a>
+                    <a href="academics.html" class="text-gray-700 hover:text-indigo-600 font-medium">Academics</a>
+                    <a href="admissions.html" class="text-gray-700 hover:text-indigo-600 font-medium">Admissions</a>
+                    <a href="news.html" class="text-gray-700 hover:text-indigo-600 font-medium">News & Events</a>
+                    <a href="gallery.html" class="text-gray-700 hover:text-indigo-600 font-medium">Gallery</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+                    <a href="portal.html" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">Student Portal</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="text-gray-700 hover:text-indigo-600" id="mobile-menu-button">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, hidden by default -->
+        <div class="hidden md:hidden bg-white shadow-lg" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">About Us</a>
+                <a href="academics.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Academics</a>
+                <a href="admissions.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Admissions</a>
+                <a href="news.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">News & Events</a>
+                <a href="gallery.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Gallery</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600">Contact</a>
+                <a href="portal.html" class="block px-3 py-2 bg-indigo-600 text-white rounded-md">Student Portal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">Staff Portal</h1>
+            <p class="mt-4 text-xl text-indigo-100">Access teaching resources, grade submission, and staff communications</p>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md" data-aos="fade-up">
+                <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Staff Login</h2>
+                <form>
+                    <div class="mb-4">
+                        <label for="staff-username" class="block text-sm font-medium text-gray-700 mb-2">Staff ID</label>
+                        <input type="text" id="staff-username" name="staff-username" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="staff-password" class="block text-sm font-medium text-gray极速加速器使用教程-700 mb-2">Password</label>
+                        <input type="password" id="staff-password" name="staff-password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember-staff" name="remember-staff" class="h-4极速加速器使用教程 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="remember-staff" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition font-medium">Login</button>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">Need access? <a href="#" class="text-indigo-600 hover:text-indigo-800">Contact administration</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Features -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Staff Portal Features</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="staff-card bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="book" class="text-indigo-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Grade Submission</h3>
+                    <p class="text-gray-600">Submit and manage student grades and report cards</p>
+                </div>
+                <div class="staff-card bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="clipboard" class="text-green-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Attendance</h3>
+                    <p class="text-gray-600">Track and manage student attendance records</p>
+                </div>
+                <div class="staff-card bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="calendar" class="text-yellow-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Lesson Plans</h3>
+                    <p class="text-gray-600">Create and share lesson plans and curriculum materials</p>
+                </div>
+                <div class="staff-card bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up" data-aos极速加速器使用教程-delay="300">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto极速加速器使用教程 mb-6">
+                        <i data-feather="message-square" class="text-red-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Communications</h3>
+                    <p class="text-gray-600">Message students, parents, and other staff members</p>
+                </div>
+                <div class="staff-card bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="file-text" class="text-purple-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Resources</h3>
+                    <p class="text-gray-600">Access teaching resources and professional development materials</p>
+                </div>
+                <div class="staff-card bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="users" class="text-blue-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Student Records</h3>
+                    <p class="text-gray-600">Access and manage comprehensive student information</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Staff Announcements</h2>
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md" data-aos="fade-up">
+                <div class="space-y-6">
+                    <div class="border-b pb-4">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2">Faculty Meeting - May 20th</h3>
+                        <p class="text-gray-600 mb-2">Monthly faculty meeting scheduled for 3:30 PM in the main auditorium. Agenda includes curriculum updates and end-of-year planning.</p>
+                        <span class="text-sm text-gray-500">Posted: May 15, 2023</span>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2">Grade Submission Deadline</h3>
+                        <p class="text-gray-600 mb-2">Final grades for the semester must be submitted by June 5th. Please ensure all assignments are graded and entered into the system.</p>
+                        <span class="text-sm text-gray-500">Posted: May 10, 2023</span>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-2">Professional Development Workshop</h3>
+                        <p class="text-gray-600 mb-2">STEM teaching strategies workshop on June 12th. Registration required through the staff portal.</p>
+                        <span class="text-sm text-gray-500">Posted: May 5, 2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Technical Support</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-700">IT Help Desk</h3>
+                    <p class="text-gray-600 mb-4">Experiencing technical issues with the staff portal or school systems? Our IT team is available to assist with login problems, software issues, or any other technical difficulties.</p>
+                    <div class="mt-6">
+                        <p class="font-medium">Email: it-support@SilverLakeAcademy.edu</p>
+                        <p class="font-medium">Phone: Ext. 5555</p>
+                        <p class="text-gray-600">Hours: 7:30 AM - 5:00 PM, Monday-Friday</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-700">Portal Resources</h3>
+                    <p class="text-gray-600 mb-4">Access training materials, user guides, and tutorials for the staff portal. New features and updates are regularly added to help you make the most of our digital tools.</p>
+                    <div class="mt-6 space-y-2">
+                        <a href="#" class="block text-indigo-600 hover:text-indigo-800 font-medium">
+                            <i data-feather="download" class="inline mr-2 w-4 h-4"></i>
+                            Staff Portal User Guide
+                        </a>
+                        <a href="#" class="block text-indigo-600 hover:text-indigo-800 font-medium">
+                            <i data-feather="video" class="inline mr-2 w-4 h-4"></i>
+                            Training Videos
+                        </a>
+                        <a href="#" class="block text-indigo-600 hover:text-indigo-800 font-medium">
+                            <i data-feather="help-circle" class="inline mr-2 w-4 h-4"></i>
+                            FAQ & Troubleshooting
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4极速加速器使用教程 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img class="h-12 mb-4" src="http://static.photos/education/200x200/1" alt="School Logo">
+                    <p class="text-gray-400">Sunrise International School provides world-class education with a focus on innovation and character development.</p>
+                    <div class="flex mt-6 space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="academics.html" class="text-gray-400 hover:text-white">Academics</a></li>
+                        <li><a href="admissions.html" class="text-gray-400 hover:text-white">Admissions</a></li>
+                        <li><a href="news.html" class="text-gray-400 hover:text-white">News & Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="portal.html" class="text-gray-400 hover:text-white">Student Portal</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="staff.html" class="text-gray-400 hover:text-white">Staff Login</a></li>
+                        <li><a href="alumni.html" class="text-gray-400 hover:text-white">Alumni</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i data-feather="map-pin" class="mr-2 mt-1 w-4 h-4"></i>
+                            <span>123 Education Avenue, Learning City, 10101</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="phone" class="mr-2 w-4 h-4"></i>
+                            <span>(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="mail" class="mr-2 w-4 h-4"></i>
+                            <span>info@sunriseinternational.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Silver Lake Academy. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm mr-6">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize feather icons
+        feather.replace();
+    </script>
+</body>
+</html>
